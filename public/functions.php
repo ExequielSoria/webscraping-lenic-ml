@@ -55,53 +55,58 @@ function getCatalog(){
 
 $htmlContent = getCatalog();
 
+function getAllProducts($html){
 
-//Creo el DOM y cargo el HTML
-$dom = new DOMDocument();
-@$dom->loadHTML($htmlContent);
+	$htmlContent = $html;
 
-//creo el XPath para navegar el DOM
-$xpath = new DOMXPath($dom);
+	//Creo el DOM y cargo el HTML
+	$dom = new DOMDocument();
+	@$dom->loadHTML($htmlContent);
+	
+	//creo el XPath para navegar el DOM
+	$xpath = new DOMXPath($dom);
+	
+	//Aca guardo los productos
+	$products = [];
+	
+	//aca selecciono todos los contenedores de los producto
+	$productsNodes = $xpath->query("//div[contains(@class, 'caja_producto')]");
+	
+	foreach ($productsNodes as $productoNode) {
+		//Extraigo el nombre del producto
+		$productName = $xpath->query(".//h1", $productoNode)->item(0)->nodeValue ?? '';
+		
+		// Extraer el codigo del producto
+		$codeNode = $xpath->query(".//p[contains(@class, 'datos1') and strong[contains(text(), 'Cód.')]]", $productoNode);
+		$productCode = '';
+		if ($codeNode->length > 0) {
+			$productCode = trim($codeNode->item(0)->nodeValue);
+			$productCode = str_replace('Cód.:', '', $productCode);
+		}
+	
+		// Extraer el precio del producto
+		$priceNode = $xpath->query(".//div[contains(@class, 'row') and contains(., '$')]//p[@class='datos']/strong", $productoNode);
+		$productPrice = $priceNode->length > 0 ? trim($priceNode->item(0)->nodeValue) : '';
+	
+		// Guardar los datos del producto en el array
+		$products[] = [
+			'productName' => trim($productName),
+			'productCode' => trim($productCode),
+			'productPrice' => trim($productPrice),
+		];
+	}
+	
+	// Imprimir los productos obtenidos
+	print_r($products[247]['productName']);
+	print_r($products[247]['productCode']);
+	print_r($products[247]['productPrice']);
 
-//Aca guardo los productos
-$products = [];
-
-// Seleccionar todos los contenedores de producto
-$productsNodes = $xpath->query("//div[contains(@class, 'caja_producto')]");
-
-foreach ($productsNodes as $productoNode) {
-    // Extraer el nombre del producto
-    $productName = $xpath->query(".//h1", $productoNode)->item(0)->nodeValue ?? '';
-    
-    // Extraer el código del producto
-    $codeNode = $xpath->query(".//p[contains(@class, 'datos1') and strong[contains(text(), 'Cód.')]]", $productoNode);
-    $productCode = '';
-    if ($codeNode->length > 0) {
-        $productCode = trim($codeNode->item(0)->nodeValue);
-        $productCode = str_replace('Cód.:', '', $productCode);
-    }
-
-    // Extraer el productPrice del producto
-    $priceNode = $xpath->query(".//div[contains(@class, 'row') and contains(., '$')]//p[@class='datos']/strong", $productoNode);
-    $productPrice = $priceNode->length > 0 ? trim($priceNode->item(0)->nodeValue) : '';
-
-    // Guardar los datos del producto en el array
-    $products[] = [
-        'productName' => trim($productName),
-        'productCode' => trim($productCode),
-        'productPrice' => trim($productPrice),
-    ];
+	return $products;
 }
 
-// Imprimir los products obtenidos
-print_r($products[247]['productName']);
-print_r($products[247]['productCode']);
-print_r($products[247]['productPrice']);
+$productos = getAllProducts($htmlContent);
 
-
-
-
-
+echo $productos[10]['productName']
 
 
 

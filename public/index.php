@@ -3,34 +3,37 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Opiniones de videojuegos</title>
+        <title>Comparacion de precios</title>
         <link rel="stylesheet" href="style.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     </head>
-        <body>
 
-            <h1>¡Ranking de Videojuegos!</h1>
+        <body class="container bg-dark text-light">
 
-            <p class="proyectDescription">Hay paginas web dedicadas enteramente a crear reviews, opiniones y ratings sobre videojuegos. Elegi 5 videojuegos y 4 sitios distintos especializados en puntuar juegos, recopilando sus puntuaciones en el sitio y las puntuaciones de sus respectivas comunidades.</p>
+            <h3 class="">COMPARACION DE PRECIOS</h3>
+            <h4>RED LENIC / Mercado Libre</h4>
 
-            <div class="card">
-                <div class="imgContainer">
-                    <img src="https://i.makeagif.com/media/10-24-2024/Lz0-0E.gif" alt="Imagen del videojuego">
+            <p>Proyecto institucional de WebScraping.</p>
+
+            <form action="./formProcess.php" method="post" class="row border border-5 rounded bg-light text-dark shadow-lg">
+
+                <h3 class="m-2">Seleccion de producto</h3>
+
+                <div class="col-3 m-2">
+                    <label for="password" class="form-label">Contraseña del Catalogo</label>
+                    <input name="password" id="password" type="password" placeholder="****" class="form-control shadow border-dark-subtle">
                 </div>
 
-                <p class="gameTitle">GEOMETRY DASH</p>
-                <div class="rankings">
-                    
-                    <p class="metacritic rank"> Metacritic: 80<br>Comunidad: 87</p>
-
-                    <p class="vandal rank"> Vandal: 80<br>Comunidad: 87</p>
-
-                    <p class="ign rank"> IGN: 80<br>Comunidad: 87</p>
-
-                    <p class="imdb rank"> IMDB: 80<br>Comunidad: 87</p>
-
+                <div class="col-3 m-2">
+                    <label for="codeProduct" class="form-label">Codigo del producto</label>
+                    <input name="codeProduct" id="codeProduct" type="text" placeholder="15518" class="form-control shadow border border-dark-subtle">
                 </div>
-            </div>
 
+                <div class="col-6 m-2">
+                    <button type="submit" class="btn btn-dark" >¡Comparar!</button>
+                </div>
+
+            </form>
 
         </body>
 </html>
