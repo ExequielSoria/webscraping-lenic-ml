@@ -10,10 +10,11 @@
 
         <body class="container bg-dark text-light">
 
-            <h3 class="">COMPARACION DE PRECIOS</h3>
-            <h4>RED LENIC / Mercado Libre</h4>
+            <h1 class="m-3" style="text-align: center;">COMPARACION DE PRECIOS</h1>
+            <h3 class="m-3" style="text-align: center;">RED LENIC × Mercado Libre</h3>
 
             <p>Proyecto institucional de WebScraping.</p>
+            <p>Recoge un producto del catalogo LENIC basandose en el codigo del producto y realiza una busqueda en MercadoLibre.com para extraer informacion basica del producto en dicha web.</p>
 
             <form action="./formProcess.php" method="post" class="row border border-5 rounded bg-light text-dark shadow-lg">
 
@@ -27,6 +28,11 @@
                 <div class="col-3 m-2">
                     <label for="codeProduct" class="form-label">Codigo del producto</label>
                     <input name="codeProduct" id="codeProduct" type="text" placeholder="15518" class="form-control shadow border border-dark-subtle">
+                </div>
+
+                <div class="col-6 m-2">
+                    <input name="updateProducts" id="updateProducts" type="checkbox" placeholder="15518">
+                    <label for="updateProducts" class="form-label">Actualizar catalogo (NO RECOMENDADO)</label>
                 </div>
 
                 <div class="col-6 m-2">

@@ -1,13 +1,13 @@
 <?php
 
-function getCatalog(){
+function getCatalog($password){
 	$login_url = 'https://www.redlenic.uno';
 	$catalog_url = 'https://www.redlenic.uno/catalogo2024.php?rub=99999#products';
 
 	//El dato del formulario
 	//A veces falla y el campo 'password' debe cambiar de productName a 'clave' y luego a 'password' otra vez
 	$post_data = [
-		'password' => 'ab24'
+		'password' => $password
 	];
 
 	// Inicio una sesion de CURL 
@@ -53,7 +53,7 @@ function getCatalog(){
 
 }
 
-$htmlContent = getCatalog();
+//$htmlContent = getCatalog('ab24');
 
 function getAllProducts($html){
 
@@ -97,16 +97,15 @@ function getAllProducts($html){
 	}
 	
 	// Imprimir los productos obtenidos
-	print_r($products[247]['productName']);
-	print_r($products[247]['productCode']);
-	print_r($products[247]['productPrice']);
+//	print_r($products[247]['productName']);
+//	print_r($products[247]['productCode']);
+//	print_r($products[247]['productPrice']);
 
 	return $products;
 }
 
-$productos = getAllProducts($htmlContent);
-
-echo $productos[10]['productName']
+//$productos = getAllProducts($htmlContent);
+//echo $productos[10]['productName']
 
 
 
