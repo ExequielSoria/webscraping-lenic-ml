@@ -95,19 +95,11 @@ function getAllProducts($html){
 			'productPrice' => trim($productPrice),
 		];
 	}
-	
-	// Imprimir los productos obtenidos
-//	print_r($products[247]['productName']);
-//	print_r($products[247]['productCode']);
-//	print_r($products[247]['productPrice']);
 
 	return $products;
 }
 
 //$productos = getAllProducts($htmlContent);
 //echo $productos[10]['productName']
-
-
-
 
 ?>

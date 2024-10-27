@@ -60,6 +60,6 @@ function getProductByCode($code){
 
 }
 
-var_dump( getProductByCode("10190") ); 
+//var_dump( getProductByCode("10190") ); 
 
 ?>

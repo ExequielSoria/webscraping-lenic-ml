@@ -22,12 +22,12 @@
 
                 <div class="col-3 m-2">
                     <label for="password" class="form-label">Contraseña del Catalogo</label>
-                    <input name="password" id="password" type="password" placeholder="****" class="form-control shadow border-dark-subtle">
+                    <input required name="password" id="password" type="password" placeholder="****" class="form-control shadow border-dark-subtle">
                 </div>
 
                 <div class="col-3 m-2">
                     <label for="codeProduct" class="form-label">Codigo del producto</label>
-                    <input name="codeProduct" id="codeProduct" type="text" placeholder="15518" class="form-control shadow border border-dark-subtle">
+                    <input required name="codeProduct" id="codeProduct" type="text" placeholder="15518" class="form-control shadow border border-dark-subtle">
                 </div>
 
                 <div class="col-6 m-2">
