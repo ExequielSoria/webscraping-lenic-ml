@@ -13,10 +13,10 @@ function connect() {
 }
 
 //Funcion para scrapear el catalogo y actualizar la base de datos
-function updateProducts($password) {
+function updateProducts() {
 
     //Scrapeo y guardo en $html
-    $html = getCatalog($password);
+    $html = getCatalog();
     $products = getAllProducts($html);
 
 //    var_dump($products);
@@ -38,6 +38,8 @@ function updateProducts($password) {
     foreach ($products as $product) {
         $stmt->execute([$product['productName'], $product['productCode'], $product['productPrice']]);
     }
+
+    echo "<h3>¡Catalogo actualizado!</h3>";
 
 }
 

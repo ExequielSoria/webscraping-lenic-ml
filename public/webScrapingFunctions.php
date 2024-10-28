@@ -1,13 +1,13 @@
 <?php
 
-function getCatalog($password){
+function getCatalog(){
 	$login_url = 'https://www.redlenic.uno';
 	$catalog_url = 'https://www.redlenic.uno/catalogo2024.php?rub=99999#products';
 
 	//El dato del formulario
 	//A veces falla y el campo 'password' debe cambiar de productName a 'clave' y luego a 'password' otra vez
 	$post_data = [
-		'password' => $password
+		'password' => "ab24"
 	];
 
 	// Inicio una sesion de CURL 
