@@ -15,7 +15,7 @@
             <p style="text-align: center;">Proyecto institucional de WebScraping.</p>
             <p>Recoge un producto del catalogo LENIC basandose en el codigo del producto y realiza una busqueda en MercadoLibre.com para extraer informacion basica del producto en dicha web.</p>
 
-            <form action="./formProcess.php" method="post" class="row border border-5 rounded bg-light text-dark shadow-lg">
+            <form action="./formProcess.php" method="post" class="row rounded bg-light text-dark shadow-lg">
 
                 <h3 class="m-2">Seleccion de producto</h3>
 
@@ -39,6 +39,13 @@
             </form>
 
         </body>
+
+        <br>
+        <br>
+        <br>
+
+        <a class ="btn btn-light" href="https://github.com/ExequielSoria/webscraping-lenic-ml/tree/main">Ir a Github!</a>  
+
 </html>
         
         

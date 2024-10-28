@@ -24,22 +24,27 @@ function updateProducts() {
     //Aca voy a guardar los datos de los productos acomodados para meter en la base de datos
     $valores = [];
     foreach ($products as $product) {
-        $valores[] = "('" . $product['productName'] . "', '" . $product['productCode'] . "', " . $product['productPrice'] . ")";
+        $valores[] = "(" . $product['productName'] . "," . $product['productCode'] . ", " . $product['productPrice'] . ", " . $product['productImage'] . ")";
     }
 
-//    var_dump($valores[0]);
+//    var_dump($valores);
     
     //Consulta preparada
-    $sql = "INSERT INTO products (name_product, code_product, price_product) VALUES (?, ?, ?) ON DUPLICATE KEY UPDATE name_product = VALUES(name_product), price_product = VALUES(price_product)";
+    $sql = "INSERT INTO products (name_product, code_product, price_product , img_product) VALUES (?, ?, ?, ?) ON DUPLICATE KEY UPDATE name_product = VALUES(name_product), price_product = VALUES(price_product)";
 
     $stmt = connect()->prepare($sql);
 
     //Metemos todo a la base de datos en un bucle
     foreach ($products as $product) {
-        $stmt->execute([$product['productName'], $product['productCode'], $product['productPrice']]);
+        $stmt->execute([$product['productName'], $product['productCode'], $product['productPrice'], $product['productImage']]);
     }
 
-    echo "<h3>¡Catalogo actualizado!</h3>";
+    if($stmt == true){
+        echo "<h3>¡Catalogo actualizado!</h3>";
+    } else {
+        echo "<h3>El catalogo no pudo actualizarse.</h3>";
+    }
+
 
 }
 

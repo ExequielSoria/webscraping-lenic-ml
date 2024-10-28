@@ -7,7 +7,7 @@ function getCatalog(){
 	//El dato del formulario
 	//A veces falla y el campo 'password' debe cambiar de productName a 'clave' y luego a 'password' otra vez
 	$post_data = [
-		'password' => "ab24"
+		'password' => 'ab24'
 	];
 
 	// Inicio una sesion de CURL 
@@ -87,14 +87,22 @@ function getAllProducts($html){
 		// Extraer el precio del producto
 		$priceNode = $xpath->query(".//div[contains(@class, 'row') and contains(., '$')]//p[@class='datos']/strong", $productoNode);
 		$productPrice = $priceNode->length > 0 ? trim($priceNode->item(0)->nodeValue) : '';
-	
+
+		
+		// Extraer la URL de la imagen del producto
+		$imageNode = $xpath->query(".//div[@class='carousel-inner']//img", $productoNode);
+		$productImage = $imageNode->length > 0 ? $imageNode->item(0)->getAttribute('src') : '';
+
+
 		// Guardar los datos del producto en el array
 		$products[] = [
 			'productName' => trim($productName),
 			'productCode' => trim($productCode),
 			'productPrice' => trim($productPrice),
+			'productImage' => $productImage
 		];
 	}
+
 
 	return $products;
 }
