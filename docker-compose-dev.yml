@@ -11,24 +11,22 @@ services:
      - ./mysql:/var/lib/mysql
      - ./mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf
      - ./files:/var/lib/mysql-files
-     - ./structure.sql:/docker-entrypoint-initdb.d/structure.sql
+    env_file: .env  
+       
+  admin:
+    image: phpmyadmin:latest
+    container_name: admin
+#    restart: always
+    ports:
+     - "8051:80"
     env_file: .env
-    networks:
-      - network1
 
   public:
     build: ./
     container_name: public
 #    restart: always
     ports:
-     - "8085:8085"
+     - "8050:80"
     env_file: .env
     volumes:
      - ./public:/var/www/html
-    networks:
-      - network1
-
-networks:
-  network1:
-    name: nginx_docker_web
-    external: true
