@@ -11,7 +11,7 @@ services:
      - ./mysql:/var/lib/mysql
      - ./mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf
      - ./files:/var/lib/mysql-files
-     - ./structure.sql:/docker-entrypoint-initdb.d/structure.sql
+     - ./web_scraping.sql:/docker-entrypoint-initdb.d/web_scraping.sql
     env_file: .env
     networks:
       - network1
