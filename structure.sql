@@ -16,6 +16,10 @@ Enter password:
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
+-- Crear la base de datos si no existe
+CREATE DATABASE IF NOT EXISTS web_scraping;
+USE web_scraping;
+
 --
 -- Table structure for table `products`
 --
