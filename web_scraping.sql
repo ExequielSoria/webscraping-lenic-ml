@@ -1,4 +1,8 @@
 Enter password: 
+-- Crear la base de datos si no existe
+CREATE DATABASE IF NOT EXISTS web_scraping;
+USE web_scraping;
+
 -- MySQL dump 10.13  Distrib 5.7.44, for Linux (x86_64)
 --
 -- Host: localhost    Database: web_scraping
@@ -16,9 +20,7 @@ Enter password:
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
--- Crear la base de datos si no existe
-CREATE DATABASE IF NOT EXISTS web_scraping;
-USE web_scraping;
+
 
 --
 -- Table structure for table `products`
