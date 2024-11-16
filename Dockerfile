@@ -16,5 +16,6 @@ RUN apt-get update && apt-get install --yes --no-install-recommends \
 
 WORKDIR /var/www/
 
+#COPY .env /var/www/
     
 LABEL description="PHP + GD + Apache + PDO"

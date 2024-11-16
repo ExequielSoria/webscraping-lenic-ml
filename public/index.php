@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Comparacion de precios</title>
+        <!--- Linkeamos los estilos de bootstrap ---->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     </head>
 
@@ -15,7 +16,7 @@
             <p style="text-align: center;">Proyecto institucional de WebScraping.</p>
             <p>Recoge un producto del catalogo LENIC basandose en el codigo del producto y realiza una busqueda en MercadoLibre.com para extraer informacion basica del producto en dicha web.</p>
 
-            <form action="./formProcess.php" method="post" class="row rounded bg-light text-dark shadow-lg">
+            <form action="./results.php" method="post" class="row rounded bg-light text-dark shadow-lg">
 
                 <h3 class="m-2">Seleccion de producto</h3>
 
@@ -29,7 +30,7 @@
 
                 <div class="col-12 m-2">
                     <input name="updateProducts" id="updateProducts" type="checkbox" placeholder="15518">
-                    <label for="updateProducts" class="form-label">Actualizar catalogo (NO RECOMENDADO)</label>
+                    <label for="updateProducts" class="form-label">Actualizar catalogo</label>
                 </div>
 
                 <div class="col-6 m-2">

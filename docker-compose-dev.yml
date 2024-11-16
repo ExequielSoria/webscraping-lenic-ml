@@ -6,14 +6,15 @@ services:
     container_name: mysql
     ports:
      - "${MYSQL_PORTS}:${MYSQL_PORTS}"
+#     - "8085:8085"
     volumes:
      - ./mysql:/var/lib/mysql:rw
      - ./mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf:rw
      - ./files:/var/lib/mysql-files:rw
      - ./web_scraping.sql:/docker-entrypoint-initdb.d/web_scraping.sql:rw
     env_file: .env
-    networks:
-     - network1
+#    networks:
+#     - network1
        
   php:
     build: ./
@@ -23,19 +24,19 @@ services:
     env_file: .env
     volumes:
      - ./public:/var/www/html:rw
-    networks:
-     - network1
+#    networks:
+#     - network1
 
   phpmyadmin:
     image: phpmyadmin:latest
     container_name: phpmyadmin
     ports:
-     - "8051:80"
+     - "${PHPMYADMIN_PORTS}:${PHPMYADMIN_PORTS}"
     env_file: .env
-    networks:
-     - network1
+#    networks:
+#     - network1
 
-networks:
-  network1:
-    name: ${DOCKER_NETWORK}
-    external: true
+#networks:
+#  network1:
+#    name: ${DOCKER_NETWORK}
+#    external: true

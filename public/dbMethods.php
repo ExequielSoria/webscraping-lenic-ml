@@ -1,40 +1,41 @@
 <?php
-//Aca se crean las conexiones a la base de datos y sus metodos para guardar y traer info
+#Aca se crean las conexiones a la base de datos y sus metodos para guardar y traer info
 
-//Traigo las funciones de webScraping
-include './webScrapingFunctions.php';
+#Incluyo las funciones de webScraping
+include './scrapingFunctions.php';
 
-//Creo la funcion de conexion
+#Creo la funcion de conexion
 function connect() {
-	$link = new PDO("mysql:host=" . $_ENV["SQL_SERVER"] . "; dbname=".$_ENV["DB_NAME"],$_ENV["SQL_USER"], $_ENV["SQL_PASS"]);
+	$link = new PDO("mysql:host=" . $_ENV["MYSQL_HOST"] . "; dbname=".$_ENV["DATABASE_NAME"],$_ENV["MYSQL_USER"], $_ENV["MYSQL_PASS"]);
 	$link->exec("set names utf8");
 
 	return $link;
 }
 
-//Funcion para scrapear el catalogo y actualizar la base de datos
+#Funcion que scrapea el catalogo y actualiza la Base de datos
 function updateProducts() {
 
-    //Scrapeo y guardo en $html
-    $html = getCatalog();
+    #Scrapeo y guardo el $html
+    $html = scrapCatalog();
     $products = getAllProducts($html);
-
-//    var_dump($products);
+    #var_dump($products);
     
-    //Aca voy a guardar los datos de los productos acomodados para meter en la base de datos
-    $valores = [];
+    #Creo el array donde voy a meter los valores de los productos
+    $values = [];
+
+    #Recorro los productos y los meto ordenados en $values
     foreach ($products as $product) {
-        $valores[] = "(" . $product['productName'] . "," . $product['productCode'] . ", " . $product['productPrice'] . ", " . $product['productImage'] . ")";
+        $values[] = "(" . $product['productName'] . "," . $product['productCode'] . ", " . $product['productPrice'] . ", " . $product['productImage'] . ")";
     }
-
-//    var_dump($valores);
+    #var_dump($values);
     
-    //Consulta preparada
+    #Preparo la consulta para meter los datos mediante el array $values
     $sql = "INSERT INTO products (name_product, code_product, price_product , img_product) VALUES (?, ?, ?, ?) ON DUPLICATE KEY UPDATE name_product = VALUES(name_product), price_product = VALUES(price_product)";
 
+    #Ejecuto la consulta ya preparada
     $stmt = connect()->prepare($sql);
 
-    //Metemos todo a la base de datos en un bucle
+    #Metemos todo a la base de datos en un bucle
     foreach ($products as $product) {
         $stmt->execute([$product['productName'], $product['productCode'], $product['productPrice'], $product['productImage']]);
     }
@@ -44,13 +45,11 @@ function updateProducts() {
     } else {
         echo "<h3>El catalogo no pudo actualizarse.</h3>";
     }
-
-
 }
+#updateProducts('ab24');
 
-//updateProducts('ab24');
 
-//Esta funcion trae la info del producto basandose en su Codigo
+#Esta funcion trae el producto desde la Base de datos segun su codigo
 function getProductByCode($code){
     $query = '
         SELECT * FROM `products` where code_product = (?)
@@ -66,7 +65,6 @@ function getProductByCode($code){
     $stmt = null;
 
 }
-
-//var_dump( getProductByCode("10190") ); 
+#var_dump( getProductByCode("10190") ); 
 
 ?>

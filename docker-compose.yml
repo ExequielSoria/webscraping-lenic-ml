@@ -19,7 +19,8 @@ services:
     build: ./
     container_name: php
     ports:
-     - "${PHP_PORTS}:${PHP_PORTS}"
+#     - "${PHP_PORTS}:${PHP_PORTS}"
+     - "8085:8085"
     env_file: .env
     volumes:
      - ./public:/var/www/html:rw
@@ -29,4 +30,4 @@ services:
 networks:
   network1:
     name: ${DOCKER_NETWORK}
-    external: true
+#    external: true
