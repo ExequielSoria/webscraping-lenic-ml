@@ -1,34 +1,32 @@
 version: '3'
 services:
 
-  database:
+  mysql:
     image: mysql:5.7
-    container_name: database
-#    restart: always
+    container_name: mysql
     ports:
-     - "3309:3306"
+     - "${MYSQL_PORTS}:${MYSQL_PORTS}"
     volumes:
-     - ./mysql:/var/lib/mysql
-     - ./mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf
-     - ./files:/var/lib/mysql-files
-     - ./web_scraping.sql:/docker-entrypoint-initdb.d/web_scraping.sql
+     - ./mysql:/var/lib/mysql:rw
+     - ./mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf:rw
+     - ./files:/var/lib/mysql-files:rw
+     - ./web_scraping.sql:/docker-entrypoint-initdb.d/web_scraping.sql:rw
     env_file: .env
     networks:
       - network1
 
-  public:
+  php:
     build: ./
-    container_name: public
-#    restart: always
+    container_name: php
     ports:
-     - "8085:8085"
+     - "${PHP_PORTS}:${PHP_PORTS}"
     env_file: .env
     volumes:
-     - ./public:/var/www/html
+     - ./public:/var/www/html:rw
     networks:
       - network1
 
 networks:
   network1:
-    name: nginx_docker_web
+    name: ${DOCKER_NETWORK}
     external: true
