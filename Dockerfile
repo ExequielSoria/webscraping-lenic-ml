@@ -14,8 +14,8 @@ RUN apt-get update && apt-get install --yes --no-install-recommends \
     && docker-php-ext-install pdo \
     && docker-php-ext-install pdo_mysql
 
-WORKDIR /var/www/
+WORKDIR /var/www/html/
 
-#COPY .env /var/www/
+COPY .env /var/www/html/
     
 LABEL description="PHP + GD + Apache + PDO"
