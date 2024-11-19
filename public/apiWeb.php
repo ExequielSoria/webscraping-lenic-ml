@@ -8,14 +8,20 @@ header('Content-Type: application/json');
 #Consultamos el metodo que se esta recibiendo
 $currentMethod = $_SERVER['REQUEST_METHOD'];
 
+#Recojo la info que viene de la URL
+$info = explode( "/" , $_SERVER['REQUEST_URI'] );
+$info = $info[2]; 
+
 #Evaluo los metodos
 switch ( $currentMethod ) {
     case "GET":
-        echo json_encode( getProducts() );
-    break;
+       
+        if ( $info === null ){
+            echo json_encode( getProducts() );
+        } else {
+            echo json_encode( getProduct( $info ) );
+        }
 
-    case "PUT":
-        echo "PUT";
     break;
 
     default:
@@ -25,37 +31,16 @@ switch ( $currentMethod ) {
     
 }
 
-
-function getProducts($code){
-
-    if ($code === null){
-
-        $query = 'SELECT * FROM `products`';
+function getProducts(){
     
-        $stmt = connect()->prepare($query);
-        
-        if($stmt->execute([$code])) {		
-            return [ "products" => $stmt->fetchAll(PDO::FETCH_ASSOC)];
-        } else { 
-            return $result = [ "state" => false, "error" => $stmt->errorInfo()];
-        }
-        
-        $stmt = null;
-
-    }
-
     $query = 'SELECT * FROM `products`';
     
     $stmt = connect()->prepare($query);
     
     if($stmt->execute([$code])) {		
-        return [ "products" => $stmt->fetchAll(PDO::FETCH_ASSOC)];
-    } else { 
-        return $result = [ "state" => false, "error" => $stmt->errorInfo()];
+        return [ "products" => $stmt->fetchAll(PDO::FETCH_ASSOC)]['products'];
     }
-    
     $stmt = null;
-
 
 }
 
@@ -72,18 +57,15 @@ function getProduct($code){
 
     #Ejecuto y evaluo la peticion sql
     if ( $stmt->execute() ) {
-        return [
-            "products" => $stmt->fetchAll(PDO::FETCH_ASSOC)
+        $response = [
+            "products" => $stmt->fetchAll(PDO::FETCH_ASSOC),
         ];
-    } else {
-        return [
-            "state" => false,
-            "error" => $stmt->errorInfo()
-        ];
+
+        if( $response['products'] == null ){
+            return "No se encontro el producto";
+        }
+        return $response['products'];
     }
-
-
 }
-
 
 ?>
