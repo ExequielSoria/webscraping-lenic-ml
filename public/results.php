@@ -60,7 +60,7 @@ $databaseProduct = getProductByCode($codeProduct);
 
     <?php
 
-        $html = searchForProductML($codeProduct);
+        $html = searchProductML($codeProduct);
 
         // Extraemos el JSON del HTML usando expresiones regulares
         preg_match('/<script type="application\/ld\+json">(.*?)<\/script>/', $html, $matches);

@@ -7,10 +7,21 @@ Para hacerlo funcionar es necesario clonar el docker y levantarlo con las siguie
 
 El boton de actualizar catalogo suele fallar, esto debido a una variable la cual se le debe de cambiar el valor periodicamente, bastante curioso, pero cuando le cambio el valor y lo regreso a como estaba antes vuelve a funcionar, no tuve tiempo de corregir ese problema, pero suele pasar muy poco.
 
-SQL_SERVER=database
-DB_NAME=web_scraping
-SQL_USER=XXXX
-SQL_PASS=XXXX
-MYSQL_ROOT_PASSWORD=XXXX 
-PMA_HOST=database
+
+.ENV
+
+#Al realizar cambios en el .env el Docker debera reiniciarse
+MYSQL_PORT=3309
+PHP_PORT=8085
+PHPMYADMIN_PORT=8086
+DOCKER_NETWORK=nginx_docker_web
+SQL_SERVER=mysql 
+PMA_HOST=mysql
+
+MYSQL_HOST=mysql
+MYSQL_USER=XXXX
+MYSQL_PASS=XXXX
+MYSQL_ROOT_PASSWORD=XXXX
+DATABASE_NAME=web_scraping
+
 TZ=America/Argentina/Buenos_Aires
