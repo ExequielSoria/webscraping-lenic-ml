@@ -28,7 +28,7 @@
             
             <br>
 
-            <p style="text-align: left;">Podes recoger el codigo de un producto del catalogo de <a href="https://www.redlenic.uno/" target="_blank">Red lenic</a> e introducirlo en el comparador de precios. El cual buscara en <a href="https://www.mercadolibre.com.ar/" target="_blank">Mercado Libre</a> y mostrara los productos que esten relacionados por nombre.</p>
+            <p style="text-align: left;">Podes recoger el codigo de un producto del catalogo de <a href="https://www.redlenic.uno/" target="_blank">Red lenic</a> e introducirlo en el comparador de precios. El cual buscara en <a href="https://www.mercadolibre.com.ar/" target="_blank">Mercado Libre</a> y mostrara los productos que esten relacionados por nombre. La contraseña del catalogo actualmente es 'ab24'.</p>
 
 
             <form action="./results.php" method="post" class="row rounded bg-light text-dark shadow-lg">
