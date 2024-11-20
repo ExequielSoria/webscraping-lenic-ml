@@ -22,6 +22,8 @@ $databaseProduct = getProductByCode($codeProduct);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--- Linkeamos los estilos de bootstrap ---->
+    <link rel="icon" href="./faviconResults.png" type="image/x-icon">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
     <title>Resultados</title>
@@ -31,7 +33,7 @@ $databaseProduct = getProductByCode($codeProduct);
     <h1 style="text-align:center;">Resultados</h1>
     <br>
 
-    <div class="p-4 shadow container col-6 bg-light text-dark rounded border border-3">
+    <div class="p-4 shadow container col-4 bg-light text-dark rounded border border-3">
 
         <h4>Producto del catalogo:</h4>
 
@@ -40,7 +42,7 @@ $databaseProduct = getProductByCode($codeProduct);
         <br>
 
 
-        <img class="rounded col-6" src="https://www.redlenic.uno/<?php echo $databaseProduct["products"][0]['img_product'];?>">
+        <img class="rounded col-5" src="https://www.redlenic.uno/<?php echo $databaseProduct["products"][0]['img_product'];?>">
         
 
         <h4 style="text-align:center;"> <br> <mark class="shadow bg-dark rounded text-light">
@@ -52,7 +54,7 @@ $databaseProduct = getProductByCode($codeProduct);
     <br>
     <br>
 
-    <a href="./index.php" class="btn btn-light">Volver a comparar</a>
+    <a href="./priceComparer.php" class="btn btn-light">Comparar otro producto</a>
 
     <br>
     <br>
@@ -83,7 +85,7 @@ $databaseProduct = getProductByCode($codeProduct);
                 <mark class="rounded">
                     <?php
                         echo "$".$product['offers']['price'] . " " . $product['offers']['priceCurrency'] ."</mark>" . "<br>" . "<br>";
-                        echo "<a class='btn bg-warning' href='" . $product['offers']['url'] . "'>Ver producto</a><br><br>";
+                        echo "<a class='btn bg-warning' target='blank'href='" . $product['offers']['url'] . "'>Ver producto</a><br><br>";
                     ?>
                 </div>
                 

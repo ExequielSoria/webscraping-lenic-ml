@@ -1,6 +1,6 @@
 <?php
 #Incluyo la conexion a la Base de datos
-include "./dbMethods.php";
+include "../webscraping/dbMethods.php";
 
 #Indico que la pagina respondera en formato Json
 header('Content-Type: application/json');
@@ -10,7 +10,7 @@ $currentMethod = $_SERVER['REQUEST_METHOD'];
 
 #Recojo la info que viene de la URL
 $info = explode( "/" , $_SERVER['REQUEST_URI'] );
-$info = $info[2]; 
+$info = $info[3]; 
 
 #Evaluo los metodos
 switch ( $currentMethod ) {
