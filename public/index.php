@@ -1,3 +1,24 @@
+<?php
+
+$visitCounter = './visitCounter.txt';
+
+#Si no existe el archivo lo creamos
+if (!file_exists($visitCounter)) {
+    // Si no existe, lo creamos y empezamos en 0
+    file_put_contents($visitCounter, 0);
+}
+
+#Leo el conteo actual
+$contador = (int)file_get_contents($visitCounter);
+
+#Incremento el contador de 1 en 1
+$contador++;
+
+#Guardo el valor en el archivo
+file_put_contents($visitCounter, $contador);
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -11,6 +32,10 @@
     </head>
 
         <body class="container bg-dark text-light">
+
+            <br>
+
+            <h4>Visitantes <span class="badge text-bg-secondary"> <?php echo $contador; ?></span></h4>
 
             <h1 class="m-3" style="text-align: center;"> <u> Practica WebScraping PHP </u></h1>
 

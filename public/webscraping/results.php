@@ -33,11 +33,13 @@ $databaseProduct = getProductByCode($codeProduct);
     <h1 style="text-align:center;">Resultados</h1>
     <br>
 
-    <div class="p-4 shadow container col-4 bg-light text-dark rounded border border-3">
+    <h4>Producto del catalogo:</h4>
 
-        <h4>Producto del catalogo:</h4>
 
-        <h4 style="text-align:center;"><?php echo $databaseProduct["products"][0]['name_product'];?></h4>
+    <div style="min-width: 270px;" class="col-md-6  shadow container col-5 bg-light text-dark rounded border border-3">
+
+
+        <h5 style="text-align:center;"><?php echo $databaseProduct["products"][0]['name_product'];?></h5>
 
         <br>
 
@@ -78,7 +80,7 @@ $databaseProduct = getProductByCode($codeProduct);
 
                 <?php
                     echo "<br><h4>" . $product['name'] . "</h4>";
-                    echo "<img src='" . $product['image'] . "' class='col-2 rounded' alt='Imagen del producto'><br>";
+                    echo "<img style='min-width: 200px;'' src='" . $product['image'] . "' class='col-2 rounded' alt='Imagen del producto'><br>";
                     echo "Marca: " . $product['brand']['name'] . "<br>";
                 ?> 
 
